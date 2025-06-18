@@ -1,3 +1,12 @@
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
 // Dark mode toggle
 document.getElementById('toggle-theme').addEventListener('click', () => {
   document.body.classList.toggle('dark');
@@ -19,17 +28,17 @@ window.addEventListener('load', revealElements);
 
 // Scroll-based nav highlight
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+const links = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 70;
-    if (pageYOffset >= sectionTop) {
+    const sectionTop = section.offsetTop - 80;
+    if (window.scrollY >= sectionTop) {
       current = section.getAttribute('id');
     }
   });
-  navLinks.forEach((link) => {
+  links.forEach((link) => {
     link.classList.remove('active');
     if (link.getAttribute('href') === `#${current}`) {
       link.classList.add('active');
